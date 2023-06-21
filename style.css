@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+  }
+
+/*this is the header for the home page*/
+/* Header styles */
+header {
+    display: block;
+    text-align: center;
+    background-color: #8080f3;
+    color: #150303;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+  
+#Home-Page-Button { 
+    /*Home-Page Button with a background and font color I will likely make this a class but not sure how to do this yet...*/
+    color: white;
+    background-color: rgb(61, 1, 61);
+    align-items: center;}
+
+.title-1{ /*these will be the titles of the questions. It also includes the home page*/
+    font-size: x-large;
+    text-align: center;
+}
+
+
+
