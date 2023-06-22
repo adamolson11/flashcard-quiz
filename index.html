@@ -7,25 +7,88 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header> View high scores/Timer!!!</header>
+   
     <main class ="container">
-        <h2 class="title-1">Coding Quiz Challenge</h2>
-        <p class="Home-Page-Paragraph"> Try to answer the following code-related questions withing the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-        </p>
-        <button id = "Home-Page-Button"> Click to get started! </button>
+
+        <div class= "high-Scores"> View high scores</div>
+        <div class="timer">Time: </div>
+
+            <div id ="Home-Page-Card">
+                <h2 class="title-1">Coding Quiz Challenge</h2> 
+                <p class="Home-Page-Paragraph"> Try to answer the following code-related questions withing the time limit. 
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+                </p>
+                <button class id = "Home-Page-Button"> Start Quiz </button>
+            </div>
+
+        <div class="cards" id="quiz-card 1" style="display: none;">
+            <p> 
+             <h3 class="title-1">Commonly used data types DO Not Include:</h3> 
+             <ul class="button-list">
+                <li><button class="hover-button" id="Q1A">1. strings</button></li>
+                <li><button class="hover-button" id="Q1B">2. booleans</button></li>
+                <li><button class="hover-button" id="Q1C">3. alerts</button></li>
+                <li><button class="hover-button" id="Q1D">4. numbers</button></li>
+              </ul>
+              </p>
+        </div>
+        <div class="cards" id="quiz-card 2" style="display: none;">
+            <p> This is the second question</p>
+        </div>
+          
+            
+    
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
 
 <!-- 
-pseudo code.    
+pseudo code. and for the read me.    
 
-Needs a page with start button.
-    * needs event listener that activates upon clicking the button..
+HTML: 
+
+
+CSS:
+
+
 Needs multiple choice questions
     *     
 Needs to advance to the next question 
 Needs a timer to countdown
 Has to be able to determine right or wrong answers
 Needs to keep a record of right and wrong answers 
-Needs to track the highest scores with a limit of high scores-->
+Needs to track the highest scores with a limit of high scores
+
+
+JavaScript: 
+
+ when you click the button, it has to take you to the first question
+ it also needs to start the timer
+ and start recording the correct and incorect answers
+    
+
+
+
+
+
+TODO: 
+wrap the button, title and paragraph in its own container 
+    * give it padding from the body so that it is centered.
+add a link to...
+    view high scores
+    <button><a href="page2.html">Go to Page 2</a></button>
+
+    Timer
+    <button><a href="page2.html">Go to Page 2</a></button>
+
+    Start Quiz Button
+    <button><a href="page2.html">Go to Page 2</a></button>
+
+
+
+
+
+
+
+-->
