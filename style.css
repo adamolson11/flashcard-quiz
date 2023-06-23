@@ -95,3 +95,7 @@ body {
 .answers li button:hover {
   background-color: rgb(162, 86, 162);
 }
+
+#Time-Is-Up {
+  display: none;
+}

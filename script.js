@@ -51,6 +51,8 @@ var cardIndex = 0; // Track the index of cards (quiz cards)
 var quizCardsContainer = document.getElementById('quiz-cards-container');
 var messageContainer = document.getElementById('message-container');
 var resultContainer = document.getElementById('result-container');
+var timeOutPage= document.getElementById('Time-Is-Up'); 
+var timerInterval;// 
 
 function handleAnswerClick(event) {
   var selectedButtonId = event.target.id;
@@ -117,4 +119,62 @@ document.getElementById('Home-Page-Button').addEventListener('click', function (
   homePageCard.style.display = 'none';
 
   displayCard(cardIndex); // Display the initial card
+
+  var timeEl = document.querySelector('.timer');
+  var secondsLeft = 10;
+
+  function setTime() {
+    timerInterval = setInterval(function () {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft + ' Until time is up and the quiz ends';
+
+      if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        showTimeIsUpPage();
+      }
+    }, 1000);
+  }
+
+  function showTimeIsUpPage() {
+    clearInterval(timerInterval);
+    quizCardsContainer.style.display = 'none';
+    timeOutPage.style.display = 'block';
+  }
+
+  setTime();
 });
+
+  document.getElementById('Start-Over-Button').addEventListener('click', function() {
+    // Show the home page card
+    var homePageCard = document.getElementById('Home-Page-Card');
+    homePageCard.style.display = 'block';
+  
+    // Hide the time-out message container
+    var timeOutPage = document.getElementById('Time-Is-Up');
+    timeOutPage.style.display = 'none';
+  
+    // Reset the quiz by resetting the card index
+    cardIndex = 0;
+  
+    // Displays the initial card
+    displayCard(cardIndex);
+
+  
+
+
+});
+
+
+
+//TODO 
+// *timer penalty for when they get a question wrong
+// *build an All done! page
+// *build a high scores page
+// * create a text box for entering scores and initials
+// *build a function that stores the scores and initials 
+//   * that function should also push the information so it is displayed on the high score page.
+//   *link the text in the home-page to the high scores page. 
+// *give the questions weight so a total score can be determined.
+// *add or subtract based on the user input 
+// * change the font of the correct/incorrect to reflect the modules. (probably in css)
+// * stop the timer if they finish the quiz in time.
