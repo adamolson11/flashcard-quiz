@@ -1,75 +1,97 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-
-
-  body {
-    display: flex; /* determines the type of boxes you will use in the body */
-    border: 3px solid black; /* outlines the entire body with a solid black line */
-    border-radius: 10px; /* Adjust the value as desired */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
 }
 
 .container {
-    
-    text-align: center;
-}
-.title-1{ /*these will be the titles of the questions. It also includes the home page*/
-    font-size: 50px;
-    text-align: center;
+  text-align: center;
 }
 
-
-.Home-Page-Paragraph{
-    font-size: 25px;
-    text-align: center;
-
+.title-1 {
+  font-size: 50px;
+  text-align: center;
 }
 
+.Home-Page-Paragraph {
+  font-size: 25px;
+  text-align: center;
+}
 
 .button-list {
-    list-style-type: none; /* Hide the bullet points */
-    padding: 0;
-  }
-  
+  list-style-type: none;
+  padding: 0;
+}
 
-#Home-Page-Button,.hover-button {
-    width: 200px;
-    height: 50px;
-    font-size: 24px;
-    color: white;
-    border-radius: 10px;
-    background-color: rgb(61, 1, 61);
-    align-items: center;
-  }
+#Home-Page-Button,
+.hover-button,
+.answer {
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgb(61, 1, 61);
+  align-items: center;
+  border: none;
+  margin: 10px;
+}
 
-
-
-.hover-button:hover{
-    background-color: rgb(162, 86, 162);
-    color:white
+.hover-button:hover,
+.answer:hover {
+  background-color: rgb(162, 86, 162);
 }
 
 .high-Scores {
-    font-size: large;
-    color: rgb(111, 10, 92);
-    padding: 10px;
-    position: absolute;
-    top: 30px;
-    left: 20px;
-  }
+  font-size: large;
+  color: rgb(111, 10, 92);
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
 
-  .timer {
-    font-size: large;
-    color: rgb(111, 10, 92);
-    padding: 10px;
-    position: absolute;
-    top: 30px;
-    right: 60px;
-  }
+.timer {
+  font-size: large;
+  color: rgb(111, 10, 92);
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  right: 60px;
+}
 
-/* 
-  Multiple elements can have the same class name, allowing you to apply consistent styles to multiple elements. */
+.question {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.answers {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answers li {
+  margin-bottom: 10px;
+}
+
+.answers li button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(111, 10, 92);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answers li button:hover {
+  background-color: rgb(162, 86, 162);
+}
