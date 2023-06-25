@@ -14,7 +14,7 @@ body {
   text-align: center;
 }
 
-.title-1 {
+.title-1,.title-2,.title-3,.title-4 {
   font-size: 50px;
   text-align: center;
 }
@@ -98,4 +98,12 @@ body {
 
 #Time-Is-Up {
   display: none;
+}
+
+#All-Done {
+  display: none;
+}
+
+#High-Scores{
+  display:none;
 }

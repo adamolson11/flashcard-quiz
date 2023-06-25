@@ -73,7 +73,7 @@ function handleAnswerClick(event) {
   if (cardIndex < quizData.length) {
     displayCard(cardIndex); // Display the next card
   } else {
-    showMessage('End of quiz!');
+  showAllDonePage(); //shows the all done page instead of just a message/ 
   }
 }
 
@@ -110,8 +110,23 @@ function displayCard(index) {
   });
 }
 
-function showMessage(message) {
-  messageContainer.textContent = message;
+function showAllDonePage() {
+  // this  Clears the quiz cards container
+  quizCardsContainer.innerHTML = '';
+
+
+var allDoneContent = document.getElementById('All-Done').innerHTML;
+
+quizCardsContainer.innerHTML = allDoneContent;
+
+var startOverButton = document.getElementById('Start-Over-Button');
+startOverButton.addEventListener('click', startOver);
+}
+
+function startOver() {
+  // Reset the card index and display the first card
+  cardIndex = 0;
+  displayCard(cardIndex);
 }
 
 document.getElementById('Home-Page-Button').addEventListener('click', function () {
@@ -168,13 +183,48 @@ document.getElementById('Home-Page-Button').addEventListener('click', function (
 
 //TODO 
 // *timer penalty for when they get a question wrong
+// * add to the timeout nested function so that it if the user completes before time is up, then it does not display the page...
 // *build an All done! page
-// *build a high scores page
-// * create a text box for entering scores and initials
-// *build a function that stores the scores and initials 
-//   * that function should also push the information so it is displayed on the high score page.
-//   *link the text in the home-page to the high scores page. 
+
+
+// // *build a high scores page
+// // * create a text box for entering scores and initials
+// <div class="input-group">
+//             <label for="initials-And-Score">Enter initials and Score:</label>
+//             <input type="text" name="initials-And-Score" id="initials-And-Score" placeholder="Adam 50" />
+//           </div>//put this in your html high score page
+// // *build a function that stores the scores and initials 
+// var resultScores
+// var userInitials   
+// function storeScores(){}
+// //   * that function should also push the information so it is displayed on the high score page.
+// //   *link the text in the home-page to the high scores page. 
 // *give the questions weight so a total score can be determined.
 // *add or subtract based on the user input 
 // * change the font of the correct/incorrect to reflect the modules. (probably in css)
 // * stop the timer if they finish the quiz in time.
+// * fix bug that after starting over, it takes you to homepage but you cannot take the quiz again.
+
+
+
+
+//write the javascript that takes the input from text box and sends it to local storage
+
+//1.) select the html query so it is available for manipulation
+// var userInitialsInput = document.querySelector("#initials-And-Score");
+
+// // 2.) create a button with a click event
+// submitScoresButton.addEventListener("click", function(event){
+//   event.preventDefault();
+
+//   //3.)  create user object from submission
+//   var userInput = {
+//     initials: userInitialsInput.value.trim()
+    
+//   };
+
+//   // set new submission to local storage 
+//   localStorage.setItem("userInput", JSON.stringify(user));
+  
+
+// });
