@@ -8,17 +8,28 @@
 </head>
 <body>
     <main class="container">
-        <div class="high-Scores">View high scores</div>
+        <a href="#High-Scores" class="high-Scores">View high scores</a>
+        
+        <div id="High-Scores">
+            <h2 class="title-4">High-Scores!</h2>
+            <label for="initials-And-Score">Enter initials and Score:</label>
+            <input type="text" name="initials-And-Score" id="initials-And-Score" placeholder="Adam 50" />
+            
+            <button id="Go-Back">Go back</button>
+            <button id="Clear-High-Scores">Clear high scores</button>
+        </div>
+        
         <div class="timer">Time:</div>
         
-
+        <!-- Rest of your HTML content -->
+        
         <div id="Home-Page-Card">
             <h2 class="title-1">Coding Quiz Challenge</h2>
             <p class="Home-Page-Paragraph">
                 Try to answer the following code-related questions within the time limit.
                 Keep in mind that incorrect answers will penalize your score/time by ten seconds!
             </p>
-            <button class id="Home-Page-Button">Start Quiz</button>
+            <button id="Home-Page-Button">Start Quiz</button>
         </div>
 
         <div id="quiz-cards-container"></div>
@@ -31,32 +42,16 @@
             <p class="Time-Out-Paragraph">
                Thank you for trying but you ran out of time.
             </p>
-            <button class id="Start-Over-Button">Start Over</button>
+            <button id="Start-Over-Button">Start Over</button>
         </div>
 
-        
         <div id="All-Done">
             <h2 class="title-3">All done!</h2>
-            <p class="Final-Score-Paragraph">
-              Your final score is...
-            </p>
-            <button class id="Start-Over-Button">Start Over</button>
+            <button id="All-Done-Start-Over-Button">Start Over</button>
         </div>
-
-                
-        <div id="High-Scores">
-            <h2 class="title-4">High-Scores!</h2>
-         <label for="initials-And-Score">Enter initials and Score:</label>
-          <input type="text" name="initials-And-Score" id="initials-And-Score" placeholder="Adam 50" />
-         
-            </p>
-            <button class id="Go-Back">Go back</button>
-            <button class id="Clear-High-Scores">Clear high scores</button>
-        </div>
-
-
         
     </main>
+    
     <script src="script.js"></script>
 </body>
 </html>

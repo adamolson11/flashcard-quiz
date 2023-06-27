@@ -55,7 +55,11 @@ body {
   position: absolute;
   top: 30px;
   left: 20px;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
 }
+
 
 .timer {
   font-size: large;
@@ -106,4 +110,5 @@ body {
 
 #High-Scores{
   display:none;
+  
 }
