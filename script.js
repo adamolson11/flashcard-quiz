@@ -51,11 +51,27 @@ var cardIndex = 0;
 var quizCardsContainer = document.getElementById('quiz-cards-container');
 var messageContainer = document.getElementById('message-container');
 var resultContainer = document.getElementById('result-container');
+
+
+//this is is for the high scores link. 
+var showHighScoreLink = document.getElementById('showHighScoreCard');
+var homePageCard = document.getElementById('Home-Page-Card');
+var showHomePage= document.getElementById('High-Scores'); 
+
 var timeOutPage = document.getElementById('Time-Is-Up');
 var timerInterval;
 var timerActive = false;
 var penaltySeconds = 2;
 var correctAnswers = 0;
+
+
+//not a function but an event listener 
+showHighScoreLink.addEventListener('click',function(event){
+  event.preventDefault(); //this allows the code to know it is a card and not a link? I believe.
+    homePageCard.style.display= 'none'; 
+    showHomePage.style.display ='block';
+})
+
 
 function handleAnswerClick(event) {
   var selectedButtonId = event.target.id;
@@ -189,6 +205,10 @@ document.getElementById('Start-Over-Button').addEventListener('click', function(
   cardIndex = 0;
   displayCard(cardIndex);
 });
+
+
+
+
 
 
 
