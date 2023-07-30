@@ -173,7 +173,7 @@ document.getElementById('Home-Page-Button').addEventListener('click', function (
   displayCard(cardIndex);
 
   var timeEl = document.querySelector('.timer');
-  secondsLeft = 500;
+  secondsLeft = 30;
 
   function setTime() {
     timerInterval = setInterval(function () {
@@ -208,29 +208,18 @@ document.getElementById('Start-Over-Button').addEventListener('click', function(
   displayCard(cardIndex);
 });
 
-// Function to retrieve the input value and store it in local storage
-function storeHighScores() {
-  // this part will get the input element with id "initials-And-Score" "it is your GETTER"
-  const text = document.getElementById("initials-And-Score");
 
-  // Get the value entered in the text box
-  const highScores = text.value;
 
-  // Store the data in local storage with a key "userData"
-  localStorage.setItem("userData", highScores);
-console.log(highScores)
-}
-
-// this function loads the storage data when you load the page so that you don't lose it. (makes the data persistent.)
 function loadHighScores() {
   const text = document.getElementById("initials-And-Score");
 
   // Get the data from local storage with the key "userData"
-  const highScores = localStorage.getItem("userData");
+  const existingData = localStorage.getItem("userData");
 
-  // If there is data in local storage, display it in the input field
-  if (highScores) {
-    text.value = highScores;
+  // If there is data in local storage, parse it from JSON and join it as a string to display in the input field
+  if (existingData) {
+    const userData = JSON.parse(existingData);
+    text.value = userData.join(", "); // Display high scores as a comma-separated string
   }
 }
 
@@ -239,9 +228,72 @@ function loadHighScores() {
 // Add event listener to the "Save" button
 const saveButton = document.getElementById("Save");
 saveButton.addEventListener("click", storeHighScores);
+
+
+
+function displayHighScores(userData) {
+  const highScoresContainer = document.getElementById("high-Scores-Container");
+  highScoresContainer.innerHTML = ""; 
+
+ 
+  userData.forEach((highScore) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = highScore;
+      highScoresContainer.appendChild(listItem);
+  });
+}
+
+function storeHighScores() {
+  const text = document.getElementById("initials-And-Score");
+  const newHighScore = text.value.trim(); 
+
+  if (newHighScore !== "") {
+   
+    let existingData = localStorage.getItem("userData");
+    let userData = existingData ? JSON.parse(existingData) : [];
+
+    userData.push(newHighScore);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    displayHighScores(userData); 
+    text.value = ""; 
+  }
+}
+
+// Function to go back to the home page
+function goBackToHomePage() {
+  // Show the home page card and hide the high scores card
+  homePageCard.style.display = 'block';
+  showHomePage.style.display = 'none';
+
+  // Clear the text box for initials and score
+  const text = document.getElementById("initials-And-Score");
+  text.value = "";
+}
+
+
+function clearHighScores() {
+  localStorage.removeItem("userData");
+
+ 
+  const highScoresContainer = document.getElementById("high-Scores-Container");
+  highScoresContainer.innerHTML = "";
+}
+
+
+
+
+
+window.addEventListener("load", function () {
+  const existingData = localStorage.getItem("userData");
+  const userData = existingData ? JSON.parse(existingData) : [];
+  displayHighScores(userData);
+});
+
+
+// Load high scores when the page is loaded
 window.addEventListener("load", loadHighScores);
+// Add event listener to the "Go Back" button
+document.getElementById('Go-Back').addEventListener('click', goBackToHomePage);
 
-
-
-
-
+// Add event listener to the "Clear High Scores" button
+document.getElementById('Clear-High-Scores').addEventListener('click', clearHighScores);
