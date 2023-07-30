@@ -113,3 +113,8 @@ body {
   
 }
 
+#high-Scores-Container{
+  display: flex
+  background-color white;
+  
+}

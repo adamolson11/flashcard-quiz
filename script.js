@@ -63,6 +63,12 @@ var timerInterval;
 var timerActive = false;
 var penaltySeconds = 2;
 var correctAnswers = 0;
+var secondsLeft
+// var highScoreForm = document.querySelector("#High-Scores");
+// var highScoreList = document.querySelector("#high-score-list");
+// var highScoreCountSpan = document.querySelector("#high-score-count");
+
+// var storeHighScores = []; these will be used for storage of local memory.
 
 
 //not a function but an event listener 
@@ -117,6 +123,7 @@ function displayCard(index) {
     answerButton.classList.add('answer');
     answerButton.id = answer.id;
     answerButton.textContent = answer.text;
+    answerButton.addEventListener('click', handleAnswerClick);
     listItem.appendChild(answerButton);
     answerList.appendChild(listItem);
   });
@@ -125,10 +132,6 @@ function displayCard(index) {
   quizCardsContainer.innerHTML = '';
   quizCardsContainer.appendChild(cardContent);
 
-  var buttons = document.querySelectorAll('.quiz-card .answer');
-  buttons.forEach(function (button) {
-    button.addEventListener('click', handleAnswerClick);
-  });
 }
 
 function showAllDonePage() {
@@ -138,13 +141,12 @@ function showAllDonePage() {
 
   quizCardsContainer.innerHTML = allDoneContent;
 
-  var startOverButton = document.querySelector('#All-Done #Start-Over-Button');
+  var startOverButton = document.querySelector(' #All-Done-Start-Over-Button');
   startOverButton.addEventListener('click', startOver);
 
-  if (timerActive) {
+
     clearInterval(timerInterval);
-    timerActive = false;
-  }
+  
 
   var finalScore = document.getElementById('result-container');
   finalScore.textContent = "Your final score is " + correctAnswers + ".";
@@ -171,14 +173,14 @@ document.getElementById('Home-Page-Button').addEventListener('click', function (
   displayCard(cardIndex);
 
   var timeEl = document.querySelector('.timer');
-  var secondsLeft = 10;
+  secondsLeft = 500;
 
   function setTime() {
     timerInterval = setInterval(function () {
       secondsLeft--;
       timeEl.textContent = secondsLeft + ' Until time is up and the quiz ends';
 
-      if (secondsLeft === 0) {
+      if (secondsLeft <= 0) {
         clearInterval(timerInterval);
         showTimeIsUpPage();
       }
@@ -206,10 +208,38 @@ document.getElementById('Start-Over-Button').addEventListener('click', function(
   displayCard(cardIndex);
 });
 
+// Function to retrieve the input value and store it in local storage
+function storeHighScores() {
+  // this part will get the input element with id "initials-And-Score" "it is your GETTER"
+  const text = document.getElementById("initials-And-Score");
+
+  // Get the value entered in the text box
+  const highScores = text.value;
+
+  // Store the data in local storage with a key "userData"
+  localStorage.setItem("userData", highScores);
+console.log(highScores)
+}
+
+// this function loads the storage data when you load the page so that you don't lose it. (makes the data persistent.)
+function loadHighScores() {
+  const text = document.getElementById("initials-And-Score");
+
+  // Get the data from local storage with the key "userData"
+  const highScores = localStorage.getItem("userData");
+
+  // If there is data in local storage, display it in the input field
+  if (highScores) {
+    text.value = highScores;
+  }
+}
 
 
 
-
+// Add event listener to the "Save" button
+const saveButton = document.getElementById("Save");
+saveButton.addEventListener("click", storeHighScores);
+window.addEventListener("load", loadHighScores);
 
 
 
